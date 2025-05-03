@@ -5,6 +5,7 @@
 | Running test              | `npx playwright test`              |
 | HTML Test Report          | `npx playwright show-report`       |
 | Running Test UI Mode      | `npx playwright test --ui`         |
+|Recording a Test           |  `npx playwright codegen [link] --> npx playwright codegen https://www.saucedemo.com/` |
 
 ## Playwright Locator Actions
 
