@@ -12,6 +12,11 @@
 |Run a set of test files from different directories| `npx playwright test [path 1] [path 2] --> npx playwright test tests_demo/practice_first/ tests_demo/practice_thrid/`|
 |Run files that have file of name| `npx playwright test [name of file] --> npx playwright test practice_first practice_second`|
 |Run a test with a specific title| `npx playwright test -g "[title of test]" --> npx playwright test -g "Login Page and Verify Login Successfully"`|
+|Debug all tests| `npx playwright test --debug`|
+
+
+
+
 
 ## Playwright Locator Actions
 
