@@ -14,10 +14,6 @@
 |Run a test with a specific title| `npx playwright test -g "[title of test]" --> npx playwright test -g "Login Page and Verify Login Successfully"`|
 |Debug all tests| `npx playwright test --debug`|
 
-
-
-
-
 ## Playwright Locator Actions
 
 | Action                      | Description                          |
@@ -45,3 +41,10 @@
 | `expect(locator).toHaveText()`   | Element matches text                 |
 | `expect(locator).toHaveValue()`  | Input element has value              |
 | `expect(page).toHaveTitle()`     | Page has title                       |
+
+
+## Playwright Configuration
+- Basic Configuration: https://playwright.dev/docs/test-configuration#basic-configuration
+- Filtering Tests: https://playwright.dev/docs/test-configuration#filtering-tests
+- Advanced Configuration: https://playwright.dev/docs/test-configuration#advanced-configuration 
+- Expect Options: https://playwright.dev/docs/test-configuration#expect-options
