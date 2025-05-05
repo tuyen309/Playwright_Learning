@@ -1,5 +1,4 @@
 ## Playwright Test Commands
-
 | Description               | Command                             |
 |---------------------------|-------------------------------------|
 | Running test              | `npx playwright test`              |
@@ -48,3 +47,12 @@
 - Filtering Tests: https://playwright.dev/docs/test-configuration#filtering-tests
 - Advanced Configuration: https://playwright.dev/docs/test-configuration#advanced-configuration 
 - Expect Options: https://playwright.dev/docs/test-configuration#expect-options
+
+## Refactoring Your Tests with test fixtures
+- Built-in fixtures
+`import { test, expect } from '@playwright/test';
+
+test('Check Title Page', async ({ page }) => {
+  await page.goto('https://www.saucedemo.com/');
+  await expect(page).toHaveTitle(/Swag Labs/);
+});`
