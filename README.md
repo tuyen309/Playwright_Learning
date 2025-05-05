@@ -57,3 +57,5 @@ test('Check Title Page', async ({ page }) => {
   await page.goto('https://www.saucedemo.com/');
   await expect(page).toHaveTitle(/Swag Labs/);
 });
+
+The { page } argument tells Playwright Test to setup the page fixture and provide it to your test function.
