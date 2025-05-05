@@ -57,5 +57,12 @@ test('Check Title Page', async ({ page }) => {
   await page.goto('https://www.saucedemo.com/');
   await expect(page).toHaveTitle(/Swag Labs/);
 });
-
+```
 The { page } argument tells Playwright Test to setup the page fixture and provide it to your test function.
+| Fixture      | Type                 | Description |
+|-------------|----------------------|-------------|
+| `page`      | `Page`                | Trang được cô lập cho mỗi lần chạy kiểm thử. |
+| `context`   | `BrowserContext`      | Ngữ cảnh trình duyệt được cô lập cho mỗi lần chạy kiểm thử. Fixture `page` cũng thuộc về ngữ cảnh này. [Tìm hiểu cách cấu hình context](https://playwright.dev/docs/api/class-browsercontext). |
+| `browser`   | `Browser`             | Trình duyệt được chia sẻ giữa các bài kiểm thử để tối ưu tài nguyên. [Tìm hiểu cách cấu hình browser](https://playwright.dev/docs/api/class-browser). |
+| `browserName` | `string`            | Tên của trình duyệt đang chạy kiểm thử, có thể là `chromium`, `firefox` hoặc `webkit`. |
+| `request`   | `APIRequestContext`   | Phiên bản **APIRequestContext** được cô lập cho
