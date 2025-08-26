@@ -13,6 +13,7 @@
 |Run a test with a specific title| `npx playwright test -g "[title of test]" --> npx playwright test -g "Login Page and Verify Login Successfully"`|
 |Debug all tests| `npx playwright test --debug`|
 
+
 ## Playwright Locator Actions
 
 | Action                      | Description                          |
@@ -66,3 +67,23 @@ The { page } argument tells Playwright Test to setup the page fixture and provid
 | `browser`   | `Browser`             | Trình duyệt được chia sẻ giữa các bài kiểm thử để tối ưu tài nguyên. [Tìm hiểu cách cấu hình browser](https://playwright.dev/docs/api/class-browser). |
 | `browserName` | `string`            | Tên của trình duyệt đang chạy kiểm thử, có thể là `chromium`, `firefox` hoặc `webkit`. |
 | `request`   | `APIRequestContext`   | Phiên bản **APIRequestContext** được cô lập cho
+
+## Parallelism
+- Run with number workers
+`npx playwright test --workers=4`
+
+## Parameterize tests
+- Parameterized Tests
+```
+[
+  { name: 'Alice', expected: 'Hello, Alice!' },
+  { name: 'Bob', expected: 'Hello, Bob!' },
+  { name: 'Charlie', expected: 'Hello, Charlie!' },
+].forEach(({ name, expected }) => {
+  // You can also do it with test.describe() or with multiple tests as long the test name is unique.
+  test(`testing with ${name}`, async ({ page }) => {
+    await page.goto(`https://example.com/greet?name=${name}`);
+    await expect(page.getByRole('heading')).toHaveText(expected);
+  });
+});
+```
