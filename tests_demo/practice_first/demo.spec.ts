@@ -2,17 +2,27 @@ import { test, expect } from '@playwright/test';
 
 test('Check Title Page', async ({ page }) => {
   await page.goto('https://www.saucedemo.com/');
-
-  // Expect a title "to contain" a substring.
   await expect(page).toHaveTitle(/Swag Labs/);
 });
 
-test('Login Page and Verify Login Successfully', async ({ page, browser }) => {
-  await page.goto('https://www.saucedemo.com/');
-  await page.locator('//input[@id="user-name"]').fill('standard_user');
-  await page.locator('//input[@id="password"]').fill('secret_sauce');
-  await page.locator('//input[@id="login-button"]').click();
-  await expect(page.locator('//div[text()="Swag Labs"]')).toBeVisible();
-  //await browser.close();
+const users = [
+  { username: 'standard_user', password: 'secret_sauce' },
+  { username: 'locked_out_user', password: 'secret_sauce' },
+  { username: 'problem_user', password: 'secret_sauce' },
+];
 
+users.forEach(({ username, password }) => {
+  test(`Login test for ${username}`, async ({ page }) => {
+    await page.goto('https://www.saucedemo.com/');
+    await page.locator('#user-name').fill(username);
+    await page.locator('#password').fill(password);
+    await page.locator('#login-button').click();
+
+    const isLockedOut = username === 'locked_out_user';
+    if (isLockedOut) {
+      await expect(page.locator('[data-test="error"]')).toBeVisible();
+    } else {
+      await expect(page.locator('.app_logo')).toHaveText('Swag Labs');
+    }
+  });
 });
