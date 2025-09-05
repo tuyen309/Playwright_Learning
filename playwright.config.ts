@@ -37,6 +37,7 @@ export default defineConfig({
     geolocation: {longitude: 12.492509, latitude:42.4412441 },
     permissions: ['geolocation'],
     colorScheme: 'dark',
+    baseURL: process.env.STAGING === '1'? 'https://www.saucedemo.com/' : 'http://example.test/',
     // storageState: 'state.json',
     // baseURL: 'https://www.saucedemo.com/',
   },
